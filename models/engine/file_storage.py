@@ -8,11 +8,18 @@ Defines a `FileStorage` class.
 
 import os
 import json
-from models.base_model import BaseModel
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.state import State
+from models.place import Place
+from models.review import Review
+
 
 class FileStorage:
     """
-    Serializes instances to a JSON file and deserializes JSON file to instances.
+    Serializes instances toi a JSON
+    file and deserializes JSON file to instances.
     """
 
     __file_path = "file.json"
@@ -44,6 +51,8 @@ class FileStorage:
         Deserializes the JSON file to __objects only if the JSON
         file exists; otherwise, does nothing.
         """
+        from models.base_model import BaseModel
+
         current_classes = {
             'BaseModel': BaseModel,
             'User': User,  # Restore User import

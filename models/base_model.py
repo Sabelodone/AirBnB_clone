@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+
+import uuid
+from datetime import datetime
 """
 Module: base.py
 """
-from models import storage
-import uuid
-from datetime import datetime
+
 
 class BaseModel:
     """
@@ -15,6 +16,8 @@ class BaseModel:
         """
         Initializes an object with its attributes.
         """
+        from models import storage
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == '__class__':
@@ -35,15 +38,18 @@ class BaseModel:
             type(self).__name__, self.id, self.__dict__)
 
     def save(self):
+        from models import storage '''Import storage only when needed'''
         """
-        Updates the public instance attribute 'updated_at' with the current datetime.
+        Updates the public instance attribute,
+        updated_at' with the current datetime.
         """
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
         """
-        Returns a dictionary containing all keys/values of the instance's __dict__.
+        Returns a dictionary containing all
+        keys/values of the instance's __dict__.
         """
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = type(self).__name__
