@@ -9,15 +9,35 @@ import json
 
 
 class HBNBCommand(cmd.Cmd):
-    """Class for the command interpreter."""
+    """Interpreter class of the prompt"""
     prompt = "(hbnb) "
 
-    def default(self, line):
-        """Catch commands if nothing else matches then."""
-        self.precmd(line)
+    def do_help(self, arg):
+        """Display a help message"""
+        if arg == "quit":
+            print("Quit command to exit the program")
+        else:
+            super().do_help(arg)
 
-    def precmd(self, line):
-        return cmd.Cmd.precmd(self, line)
+    def do_EOF(self, line):
+        """EOF Handler"""
+        print()
+        return True
+
+    def emptyline(self):
+        """No execution performed"""
+        pass
+
+    def do_quit(self, arg):
+        "Exit th console"
+        return True
+
+    def default(self, arg):
+        """Get the commands that matches no file instruction"""
+        self.precmd(arg)
+
+    def precmd(self, arg):
+        return cmd.Cmd.precmd(self, arg)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
