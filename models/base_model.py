@@ -38,7 +38,7 @@ class BaseModel:
             type(self).__name__, self.id, self.__dict__)
 
     def save(self):
-        from models import storage '''Import storage only when needed'''
+        from models import storage
         """
         Updates the public instance attribute,
         updated_at' with the current datetime.
