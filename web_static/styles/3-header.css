@@ -7,3 +7,13 @@ header {
     display: flex;
     align-items: center;
     padding-left: 20px;
+}
+
+.logo {
+    background-image: url('/AirBnB_clone/web_static/images/logo.png'); /* Path adjusted */
+    width: 100px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+}
